@@ -31,6 +31,18 @@ const viewers = {}; // collect viewers grouped by socket.id
 const broadcast = 'broadcast?id=123&name=Broadcaster';
 const viewer = 'viewer?id=123&name=Viewer';
 
+const dbConfig = {
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PWD,
+    port: 5432, // Default PostgreSQL port
+    ssl: {
+        rejectUnauthorized: false
+    }
+};
+const { Pool } = require('pg');
+
 // Sentry config
 const sentryEnabled = getEnvBoolean(process.env.SENTRY_ENABLED);
 if (sentryEnabled) {
@@ -136,16 +148,32 @@ app.get(['/home'], (req, res) => {
     return Object.keys(req.query).length > 0 && id ? res.sendFile(html.home) : notFound(res);
 });
 
-app.get(['/broadcast'], (req, res) => {
+app.get(['/broadcast'], async(req, res) => {
     //http://localhost:3016/broadcast?id=123&name=broadcaster
     const { id, name } = req.query;
-    return Object.keys(req.query).length > 0 && id && name ? res.sendFile(html.broadcast) : notFound(res);
+
+    const pool = new Pool(dbConfig);
+    const sqlQuery = `SELECT room_id FROM live_shows WHERE room_id = '${id}'`;
+    const queryResult = await pool.query(sqlQuery);
+    if (queryResult.rows.length > 0) {
+        return Object.keys(req.query).length > 0 && id && name ? res.sendFile(html.broadcast) : notFound(res);
+    } else {
+        notFound(res);
+    }
 });
 
-app.get(['/viewer'], (req, res) => {
+app.get(['/viewer'], async(req, res) => {
     //http://localhost:3016/viewer?id=123&name=viewer
     const { id, name } = req.query;
-    return Object.keys(req.query).length > 0 && id && name ? res.sendFile(html.viewer) : notFound(res);
+
+    const pool = new Pool(dbConfig);
+    const sqlQuery = `SELECT room_id FROM live_shows WHERE room_id = '${id}'`;
+    const queryResult = await pool.query(sqlQuery);
+    if (queryResult.rows.length > 0) {
+        return Object.keys(req.query).length > 0 && id && name ? res.sendFile(html.viewer) : notFound(res);
+    } else {
+        notFound(res);
+    }
 });
 
 app.get(['*'], (req, res) => {
