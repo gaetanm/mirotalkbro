@@ -274,6 +274,8 @@ elementDisplay(fullScreenOn, broadcastSettings.buttons.fullScreenOn && isFullScr
 elementDisplay(togglePIP, broadcastSettings.buttons.pictureInPicture && isPIPSupported());
 elementDisplay(settingsBtn, broadcastSettings.options.settings);
 elementDisplay(goHome, broadcastSettings.buttons.close);
+elementDisplay(broadcastFormHeader, false);
+toggleSettings();
 
 if (broadcastSettings.options.start_full_screen) {
     broadcastForm.classList.remove(...broadcastForm.classList);
@@ -287,7 +289,7 @@ if (broadcastSettings.options.start_full_screen) {
 // Handle session timer
 // =====================================================
 
-startSessionTime();
+// startSessionTime();
 
 function startSessionTime() {
     let sessionElapsedTime = 0;

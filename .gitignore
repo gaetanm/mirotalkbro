@@ -18,3 +18,5 @@ package-lock.json
 .env
 docker-compose.yml
 docker-push.sh
+
+.idea/*

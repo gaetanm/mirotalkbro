@@ -2,16 +2,16 @@
 
 const broadcastSettings = {
     buttons: {
-        copyRoom: true,
-        shareRoom: true,
-        screenShareStart: true,
+        copyRoom: false,
+        shareRoom: false,
+        screenShareStart: false,
         video: true,
-        recordingStart: true,
-        messagesOpenForm: true,
-        viewersOpenForm: true,
+        recordingStart: false,
+        messagesOpenForm: false,
+        viewersOpenForm: false,
         fullScreenOn: true,
         pictureInPicture: true,
-        close: true,
+        close: false,
     },
     options: {
         settings: true,
@@ -25,12 +25,12 @@ const broadcastSettings = {
 const viewerSettings = {
     buttons: {
         audio: true,
-        snapshot: true,
-        recordingStart: true,
+        snapshot: false,
+        recordingStart: false,
         fullScreenOn: true,
-        message: true,
+        message: false,
         pictureInPicture: true,
-        close: true,
+        close: false,
     },
     options: {
         start_full_screen: false,

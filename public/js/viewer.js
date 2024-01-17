@@ -102,7 +102,7 @@ socket.on('offer', (id, description, iceServers) => {
         saveRecording();
         attachStream(event.streams[0]);
         if (event.track.kind === 'audio') {
-            popupEnableAudio();
+            enableAudio.click();
         }
     };
     peerConnection.onicecandidate = (event) => {
@@ -197,6 +197,7 @@ elementDisplay(recordingStart, viewerSettings.buttons.recordingStart);
 elementDisplay(fullScreenOn, viewerSettings.buttons.fullScreenOn && isFullScreenSupported());
 elementDisplay(togglePIP, viewerSettings.buttons.pictureInPicture && isPIPSupported());
 elementDisplay(goHome, viewerSettings.buttons.close);
+elementDisplay(viewerFormHeader, false);
 
 messageDisplay(viewerSettings.buttons.message);
 
@@ -219,7 +220,7 @@ if (viewerSettings.options.start_full_screen) {
 // Handle session timer
 // =====================================================
 
-startSessionTime();
+// startSessionTime();
 
 function startSessionTime() {
     let sessionElapsedTime = 0;
