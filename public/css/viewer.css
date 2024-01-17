@@ -1,13 +1,9 @@
 .viewer {
-    padding: 1.5rem;
-    min-width: 320px;
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: auto;
     color: var(--text-color);
     background: var(--secondary-color);
-    border: var(--border);
-    border-radius: var(--border-radius);
 }
 
 .viewer-header {

@@ -249,7 +249,7 @@ function sendToViewersDataChannel(method, action = {}, peerId = '*') {
 // Handle theme
 // =====================================================
 
-const getMode = window.localStorage.mode || 'dark';
+const getMode = window.localStorage.mode || 'white';
 if (getMode === 'dark') body.classList.toggle('dark');
 
 // =====================================================
@@ -270,7 +270,7 @@ elementDisplay(screenShareStart, broadcastSettings.buttons.screenShareStart);
 elementDisplay(recordingStart, broadcastSettings.buttons.recordingStart);
 elementDisplay(messagesOpenForm, broadcastSettings.buttons.messagesOpenForm);
 elementDisplay(viewersOpenForm, broadcastSettings.buttons.viewersOpenForm);
-elementDisplay(fullScreenOn, broadcastSettings.buttons.fullScreenOn && isFullScreenSupported());
+elementDisplay(fullScreenOn, false);
 elementDisplay(togglePIP, broadcastSettings.buttons.pictureInPicture && isPIPSupported());
 elementDisplay(settingsBtn, broadcastSettings.options.settings);
 elementDisplay(goHome, broadcastSettings.buttons.close);

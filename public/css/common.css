@@ -21,7 +21,6 @@
 }
 
 body {
-    min-height: 100vh;
     background-color: var(--primary-color);
     overflow: auto; /* auto|hidden */
 }
@@ -82,11 +81,9 @@ button:hover {
 .container video {
     z-index: 1;
     position: relative;
-    width: 100%;
+    width: 598px;
     height: 100%;
     cursor: pointer;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
 }
 
 .video-off {

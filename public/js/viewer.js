@@ -180,7 +180,7 @@ function handleDataChannelMessage(data) {
 // Handle theme
 // =====================================================
 
-const getMode = window.localStorage.mode || 'dark';
+const getMode = window.localStorage.mode || 'white';
 if (getMode === 'dark') body.classList.toggle('dark');
 
 // =====================================================
@@ -198,6 +198,7 @@ elementDisplay(fullScreenOn, viewerSettings.buttons.fullScreenOn && isFullScreen
 elementDisplay(togglePIP, viewerSettings.buttons.pictureInPicture && isPIPSupported());
 elementDisplay(goHome, viewerSettings.buttons.close);
 elementDisplay(viewerFormHeader, false);
+elementDisplay(viewerButtons, false);
 
 messageDisplay(viewerSettings.buttons.message);
 
